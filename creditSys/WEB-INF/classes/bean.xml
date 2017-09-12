@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<!-- 注意配置顺序，被依赖的对象配置在前 -->
+	<bean id="transaction" class="com.njwb.transaction.impl.TransactionImpl"></bean>
+	<bean id="userDaoImpl" class="com.njwb.dao.impl.UserDaoImpl"></bean>
+	<bean id="companyDao" class="com.njwb.dao.impl.CompanyDaoImpl"></bean>
+	<bean id="productDao" class="com.njwb.dao.impl.ProductDaoImpl"></bean>
+	<bean id="investorDao" class="com.njwb.dao.impl.InvestorDaoImpl"></bean>
+	<bean id="loadPeriodDaoImpl" class="com.njwb.dao.impl.LoadPeriodDaoImpl"></bean>
+	<bean id="newsDao" class="com.njwb.dao.impl.NewsDaoImpl"></bean>
+	<bean id="productTypeDao" class="com.njwb.dao.impl.ProductTypeDaoImpl"></bean>
+	
+	<!-- serviceBean -->
+    <bean id="productService" class="com.njwb.service.impl.ProductServiceImpl">	
+ 		<property name="productDao" ref="productDao"></property>
+   	</bean>
+   	<bean id="investorService" class="com.njwb.service.impl.InvestorServiceImpl">	
+ 		<property name="investorDao" ref="investorDao"></property>
+   	</bean>
+   	
+	<bean id="userSerivce" class="com.njwb.service.impl.UserSerivceImpl">
+    	<property name="userDao" ref="userDaoImpl"></property>
+    </bean>
+  
+    <bean id="loadPeriodService" class="com.njwb.service.impl.LoadPeriodServiceImpl">	
+ 		<property name="loadPeriodDao" ref="loadPeriodDaoImpl"></property>
+   </bean>
+	<bean id="companyService" class="com.njwb.service.impl.CompanyServiceImpl">
+		<property name="companyDao" ref="companyDao"></property>
+	</bean>
+	<bean id="newService"  class="com.njwb.service.impl.NewServiceImpl">
+		<property name="newsDao" ref="newsDao"></property>
+		<property name="tx" ref="transaction"></property>
+	</bean>
+	<bean id="companyService" class="com.njwb.service.impl.CompanyServiceImpl">
+		<property name="companyDao" ref="companyDao"></property>
+		<property name="transaction" ref="transaction"></property>
+	</bean>
+	<bean id="productTypeService" class="com.njwb.service.impl.ProductTypeServiceImpl">
+		<property name="productTypeDao" ref="productTypeDao"></property>
+		<property name="tx" ref="transaction"></property>
+	</bean>
+	<bean id="userLoginService" class="com.njwb.service.impl.UserLoginServiceImpl">
+		<property name="userLoginDao" ref="userLoginDao"></property>
+	</bean>
+   
+	<!-- 配置action -->
+	<bean id="userAction" class="com.njwb.action.UserAction">
+		<property name="userSerivce" ref="userSerivce"></property>
+	</bean>
+	<bean id="productAction" class="com.njwb.action.ProductAction">
+		<property name="productService" ref="productService"></property>
+		<property name="companyService" ref="companyService"></property>
+		<property name="productTypeService" ref="productTypeService"></property>
+		<property name="loadPeriodService" ref="loadPeriodService"></property>
+		<property name="investorService" ref="investorService"></property>
+	</bean>
+	<bean id="loadPeriodAction" class="com.njwb.action.LoadPeriodAction">
+		<property name="loadPeriodService" ref="loadPeriodService"></property>
+	</bean>
+
+	<bean id="companyAction" class="com.njwb.action.CompanyAction">
+		<property name="companyService" ref="companyService"></property>
+		<property name="productService" ref="productService"></property>
+		<property name="investorService" ref="investorService"></property>
+	</bean>
+	
+	<bean id="investorAction" class="com.njwb.action.InvestorAction">
+		<property name="investorService" ref="investorService"></property>
+	</bean>
+	<bean id="newsAction" class="com.njwb.action.NewsAction">
+		<property name="newService" ref="newService"></property>
+	</bean>
+
+	<bean id="productTypeManageAction" class="com.njwb.action.ProductTypeManageAction">
+		<property name="productTypeService" ref="productTypeService"></property>
+	</bean>
+	
+	<bean id="ajaxNewsAction" class="com.njwb.action.AjaxNewsAction">
+		<property name="newService" ref="newService"></property>
+	</bean>
+
+</beans>
+
+
+

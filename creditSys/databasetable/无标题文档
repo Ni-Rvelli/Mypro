@@ -1,0 +1,90 @@
+Create database project;
+
+create table t_user(
+ id  int primary key auto_increment,
+userName varchar(20),
+pwd varchar(20),
+createTime  datetime
+
+);
+create table t_product(
+id int primary key auto_increment,
+productNo int,
+productName varchar(20) character set utf8,
+loadRate varchar(20),
+company varchar(20) character set utf8,
+productType varchar(20) character set utf8,
+loadPeriod varchar(20),
+loadScale varchar(20),
+reality varchar(20),
+linkMan varchar(20) character set utf8,
+linkBank varchar(20) character set utf8,
+context varchar(50) character set utf8,
+createTime datetime,
+product_pic varchar(30) character set utf8,
+product_pic_realName varchar(20) character set utf8
+);
+
+
+create table t_company(
+id int primary key auto_increment,
+companyName varchar(20),
+percentage varchar(20),
+context varchar(50)
+);
+create table t_investor(
+id int primary key auto_increment,
+indentityId varchar(20),
+name varchar(20),
+moneny varchar(20)
+
+);
+create table t_loadPeriod(
+id int primary key auto_increment,
+
+period varchar(20),
+status int
+);
+create table t_loadRate(
+
+id int primary key auto_increment,
+rate varchar(20),
+status int
+
+);
+create table t_loadScale(
+id int primary key auto_increment,
+scale varchar(20),
+status int
+);
+create table t_productType(
+id int primary key auto_increment,
+name varchar(20) character set utf8,
+status int
+);
+create table t_news(
+id int primary key auto_increment,
+
+)
+alter table t_product add(
+product_pic varchar(30),
+product_pic_realName varchar(20)
+);
+alter table t_investor add(
+investProduct varchar(20)
+);
+
+//新闻添加
+create table t_news(
+id int primary key auto_increment,
+title varchar(20) character set utf8,
+context varchar(50) character set utf8,
+createTime datetime,
+News_file_name varchar(50) character set utf8,
+News_file_realName varchar(50) character set utf8
+);
+
+alter table t_product add(
+loadScale varchar(20) character set utf8,
+context varchar(50) character set utf8
+);

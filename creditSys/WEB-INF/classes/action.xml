@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+	<action name="login.do" class="userAction"  
+		method="login">
+		<result name="error" type="forward">/page/error.jsp</result>
+		
+		<!-- /打头，重定向的请求地址从端口后开始，会少了应用名 ,分发器会把应用名称加上-->
+		<result name="success" type="redirect">/page/main.jsp</result>
+	</action>
+	
+	<action name="queryAllByPage.do" class="productAction" method="queryAllByPage">
+		<result name="success1" type="forward">/page/productManage.jsp</result>
+		<result name="success2" type="forward">/page/onlineApply.jsp</result>
+		<result name="success3" type="forward">/index.jsp</result>
+	</action>
+	<action name="productAdd.do" class="productAction" method="productAdd">
+		<result name="success" type="forward">/page/success.jsp</result>
+		<result name="error" type="forward">/page/error.jsp</result>
+	</action>
+	<action name="productQuery.do" class="productAction" method="productQuery">
+		<result name="success" type="forward">/page/productManage.jsp</result>
+	</action>
+	<action name="productModify.do" class="productAction" method="productModify">
+		<result name="success" type="forward">/page/productModify.jsp</result>
+	</action>
+	
+	<action name="productUp.do" class="productAction" method="productUp">
+		<result name="success" type="forward">productQuery.do</result>
+	</action>
+	
+	<action name="productDetail.do" class="productAction" method="productDetail">
+		<result name="success" type="forward">/page/productDetail.jsp</result>
+		<result name="success1" type="forward">/product.jsp</result>
+	</action>
+	
+	<action name="deleteProduct.do" class="productAction" method="deleteProduct">
+		<result name="success" type="forward">productQuery.do</result>
+	</action>
+	
+	<action name="productQueryAll.do" class="productAction" method="productQueryAll">
+		<result name="success" type="forward">/page/productAdd.jsp</result>
+	</action>
+	
+	<action name="checkProductName.do" class="productAction" method="checkProductName">
+	</action>  
+	
+	<action name="queryAllByPeriod.do" class="loadPeriodAction" method="queryAllByPeriod">
+		<result name="success" type="forward">/page/loanTimeManage.jsp</result>
+	</action>
+	
+	<action name="loadPreiodAdd.do" class="loadPeriodAction" method="loadPreiodAdd">
+		<result name="success" type="forward">queryAllByPeriod.do</result>
+		<result name="error" type="forward">queryAllByPeriod.do</result>
+	</action>
+	<action name="loadPeriodModify.do" class="loadPeriodAction" method="loadPeriodModify">
+		<result name="success" type="forward">queryAllByPeriod.do</result>
+		<result name="error" type="forward">queryAllByPeriod.do</result>
+	</action>
+	
+	<action name="statusModify.do" class="loadPeriodAction" method="statusModify">
+	</action>
+	<action name="loadPeriodQuery.do" class="loadPeriodAction" method="loadPeriodQuery">
+		<result name="success" type="forward">/index.jsp</result>
+		<result name="error" type="forward">/index.jsp</result>
+	</action>
+	
+	
+	<action name="news.do" class="newsAction" method="newsShow">
+		<result name="success" type="forward">/news.jsp</result>
+		<result name="error" type="redirect">/njwb/mainSession.jsp</result>
+	</action>
+	
+	<action name="newsAdd.do" class="newsAction"  method="newsAdd">
+		<result name="success" type="forward">newsManage.do</result>
+		<result name="error" type="redirect">/njwb/mainSession.jsp</result>
+	</action>
+	
+	
+	<action name="newsManage.do" class="newsAction" method="newsManage">
+		<result name="success" type="forward">/page/newsManage.jsp</result>
+		<result name="error" type="redirect">/njwb/mainSession.jsp</result>
+	</action>
+	
+	<action name="newsModifyBefor.do" class="newsAction" method="newsModifyBefor">
+		<result name="success" type="forward">/page/newsModify.jsp</result>
+		<result name="error" type="redirect">/njwb/mainSession.jsp</result>
+	</action>
+	
+	<action name="newsModify.do" class="newsAction" method="newsModify">
+		<result name="success" type="forward">newsManage.do</result>
+		<result name="error" type="redirect">/njwb/mainSession.jsp</result>
+	</action>
+	
+	<action name="newsDetail.do" class="newsAction" method="newsDetail">
+		<result name="success" type="forward">/page/newsDetail.jsp</result>
+		<result name="error" type="redirect">/njwb/mainSession.jsp</result>
+	</action>
+	
+	<action name="newsDelete.do" class="newsAction" method="newsDelete">
+		<result name="success" type="forward">newsManage.do</result>
+		<result name="error" type="redirect">/njwb/mainSession.jsp</result>
+	</action>
+	<action name="queryAllCompanyByPage.do" class="companyAction" method="queryAllCompanyByPage">
+		<result name="success" type="forward">/page/companyManage.jsp</result>
+	</action>
+	
+	<action name="AjaxNewsTitle.do" class="ajaxNewsAction" method="checkTitle">
+		<result name="success" type="forward">newsManage.do</result>
+		<result name="error" type="redirect">/njwb/mainSession.jsp</result>
+	</action>
+	
+	
+	<action name="companyReportDis.do" class="companyAction" method="companyReportDis">
+		<result name="error" type="forward"></result>
+		<result name="success" type="forward">/page/companyReport.jsp</result>
+	</action>
+	<action name="companyReportDetailDis.do" class="companyAction" method="companyReportDetailDis">
+		<result name="error" type="forward"></result>
+		<result name="success" type="forward">/page/companyReportDetail.jsp</result>
+	</action>
+	
+	<action name="companyModify.do" class="companyAction"  method="companyModify">
+		<result name="error" type="forward">/page/error.jsp</result>
+		<result name="success" type="forward">queryAllCompanyByPage.do</result>
+	</action>
+	
+	<action name="companyDetail.do" class="companyAction"  method="companyDetail">
+		<result name="edit" type="forward">/page/companyModify.jsp</result>
+		<result name="detail" type="forward">/page/companyDetail.jsp</result>
+	</action>
+	
+	<action name="companyDelete.do" class="companyAction"  method="companyDelete">
+		<result name="error" type="forward">/page/error.jsp</result>
+		<result name="success" type="forward">queryAllCompanyByPage.do</result>
+	</action>
+	
+	<action name="companyAdd.do" class="companyAction"  method="companyAdd">
+		<result name="error" type="forward">/page/error.jsp</result>
+		<result name="success" type="forward">queryAllCompanyByPage.do</result>
+	</action>
+	<action name=".do" class="companyAction" method="queryAllCompanyByPage">
+		<result name="success" type="forward">/page/companyManage.jsp</result>
+	</action>
+
+	
+	<action name="apply.do" class="investorAction" method="addInvestor">
+		<result name="error" type="forward"> </result>
+		<result name="success" type="redirect"></result>
+	</action>
+	<action name="applyDetail.do" class="investorAction" method="applyDetail">
+		<result name="error" type="forward"> </result>
+		<result name="success" type="forward">/page/onlineApplyDetail.jsp</result>
+	</action>
+
+
+	<action name="queryType.do" class="productTypeManageAction" method="productTypeQuery">
+		<result name="success" type="forward">/page/productTypeManage.jsp</result>
+		<result name="error" type="forward">/page/productTypeManage.jsp</result>
+	</action>
+	
+	
+	<action name="addType.do" class="productTypeManageAction" method="productTypeAdd">
+		<result name="success" type="forward">queryType.do</result>
+		<result name="error" type="forward">/page/error.jsp</result>
+	</action>
+	<action name="typeStatus.do" class="productTypeManageAction" method="changeStatus"></action>
+	<action name="typeModify.do" class="productTypeManageAction" method="typeModify">
+		<result name="success" type="forward">queryType.do</result>
+		<result name="error" type="forward">/page/error.jsp</result>
+	</action>
+	
+</actions>
+

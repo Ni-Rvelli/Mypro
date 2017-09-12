@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <welcome-file-list>
+  <!-- 当浏览器访问的时候,只输入了应用名称,没有指定访问的具体资源的时候,页面主动跳转到欢迎页 -->
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 设置teacher_jsp03应用的session有效时间为10分钟 -->
+  <session-config>
+  	<session-timeout>30</session-timeout>
+  </session-config>
+  <!-- 配置全局的初始参数 -->
+  <context-param>
+  	<param-name>contextEncoding</param-name>
+  	<param-value>utf-8</param-value>
+  </context-param>
+  
+  
+  
+  
+  
+  <!-- 配置一个过滤器 -->
+  <filter>
+  	<filter-name>authFilter</filter-name>
+  	<filter-class>com.njwb.filter.AuthFilter</filter-class>
+  	<init-param>
+  		<param-name>noAuth</param-name>
+  		<param-value>.js,.css,.do,js.jsp,.jsp,.png,.jpg,.map,.gif,.woff,.ttf</param-value>
+  	</init-param>
+  </filter>
+  <!-- 该过滤器拦截什么请求，过滤器和请求的映射关系 -->
+  <filter-mapping>
+  	<filter-name>authFilter</filter-name>
+  	<!-- 所有的请求都拦截 *是通配符 -->
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  
+  <!-- 配置字符集过滤器 -->
+  <filter>
+  	<filter-name>characterFilter</filter-name>
+  	<filter-class>com.njwb.filter.CharacterFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>characterFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  
+  <!-- 配置核心分发器的请求映射 -->
+  <!-- 
+  	并不需要拦截所有的请求，只拦截需要action处理的请求，这个时候需要给这一类请求添加一个标识，以.do结尾
+   -->
+   <servlet>
+   	<servlet-name>dipatcherServlet</servlet-name>
+   	<servlet-class>com.njwb.dispatcher.DispatcherServlet</servlet-class>
+   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>herrhfetjh</servlet-name>
+    <servlet-class>herrhfetjh</servlet-class>
+  </servlet>
+
+   <servlet-mapping>
+   	<servlet-name>dipatcherServlet</servlet-name>
+   	<url-pattern>*.do</url-pattern>
+   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>herrhfetjh</servlet-name>
+    <url-pattern>/servlet/herrhfetjh</url-pattern>
+  </servlet-mapping>
+  
+  
+</web-app>
